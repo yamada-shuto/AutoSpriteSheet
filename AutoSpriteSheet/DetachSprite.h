@@ -10,6 +10,8 @@
 #include <memory>
 #include <SpriteFont.h>
 #include <SimpleMath.h>
+#include <d3d11_1.h>
+#include <iostream>
 
 #include "WICTextureLoader.h"
 #include "DebugText.h"
@@ -23,7 +25,13 @@ public:
 	void Update();
 	void Render(const std::unique_ptr<DirectX::SpriteBatch>& spriteBatch);
 private:
+	bool GetTextureSize(const wchar_t Id, float sizex ,float sizey);
+	float m_sizeX;
+	float m_sizeY;
+	int num;
+	
 	//ブーストゲージ
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_boost;
+	D3D11_SHADER_RESOURCE_VIEW_DESC* m_desc;
 	std::unique_ptr<DebugText> m_TextureLength;
 };

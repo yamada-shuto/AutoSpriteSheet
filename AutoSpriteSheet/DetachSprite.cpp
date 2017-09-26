@@ -15,15 +15,29 @@ void DetachSprite::Initialize(const Microsoft::WRL::ComPtr<ID3D11Device>& d3dDev
 
 	m_TextureLength = std::make_unique<DebugText>(d3dDevice.Get(), spriteBatch.get());
 
+	m_sizeX = 0;
+	m_sizeY = 0;
+	num = 0;
 }
 
 void DetachSprite::Update()
 {
-	m_TextureLength->AddText(DirectX::SimpleMath::Vector2(0, 100), L"HP : %d", 0);
+	num++;
+	if (num % 10 == 0)
+	{
+		m_sizeX++;
+	}
+	m_TextureLength->AddText(DirectX::SimpleMath::Vector2(0, 100), L"X : %d  Y : %d", m_sizeX , m_sizeY);
 }
 
 void DetachSprite::Render(const std::unique_ptr<DirectX::SpriteBatch>& spriteBatch)
 {	
 	spriteBatch->Draw(m_boost.Get(), DirectX::SimpleMath::Vector2(0, 0));
 	m_TextureLength->Draw();
+}
+
+bool DetachSprite::GetTextureSize(const wchar_t Id, float sizex, float sizey)
+{
+	
+	return false;
 }
