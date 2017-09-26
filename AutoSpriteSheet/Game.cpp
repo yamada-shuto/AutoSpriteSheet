@@ -36,6 +36,16 @@ void Game::Initialize(HWND window, int width, int height)
     m_timer.SetFixedTimeStep(true);
     m_timer.SetTargetElapsedSeconds(1.0 / 60);
     */
+
+	//スプライトバッチ
+	m_spriteBatch.reset(new SpriteBatch(m_d3dContext.Get()));
+
+	m_detach = std::make_unique<DetachSprite>();
+	m_detach->Initialize(m_d3dDevice , m_spriteBatch);
+	////ゲージの読み込み
+	//DX::ThrowIfFailed(
+	//	DirectX::CreateWICTextureFromFile(
+	//		m_d3dDevice.Get(), L"Images/Test.png", nullptr, m_boost.ReleaseAndGetAddressOf()));
 }
 
 // Executes the basic game loop.
@@ -52,10 +62,11 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& timer)
 {
-    float elapsedTime = float(timer.GetElapsedSeconds());
+	float elapsedTime = float(timer.GetElapsedSeconds());
 
-    // TODO: Add your game logic here.
-    elapsedTime;
+	// TODO: Add your game logic here.
+	elapsedTime;
+	m_detach->Update();
 }
 
 // Draws the scene.
@@ -69,8 +80,12 @@ void Game::Render()
 
     Clear();
 
-    // TODO: Add your rendering code here.
+	m_spriteBatch->Begin();
 
+    // TODO: Add your rendering code here.
+	//m_spriteBatch->Draw(m_boost.Get(), DirectX::SimpleMath::Vector2(0, 0));
+	m_detach->Render(m_spriteBatch);
+	m_spriteBatch->End();
     Present();
 }
 
