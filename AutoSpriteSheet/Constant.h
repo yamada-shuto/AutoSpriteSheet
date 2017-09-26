@@ -8,6 +8,17 @@
 #include <d3d11_1.h>
 #include <exception>
 
+#define TEXTBOX_MAX_WIDTH 50
+#define TEXTBOX_MAX_HEIGHT 20
+
+struct POSITION
+{
+	float x;
+	float y;
+	float bottom;
+	float length;
+};
+
 namespace DX
 {
 	inline void ThrowIfFailed(HRESULT hr)
