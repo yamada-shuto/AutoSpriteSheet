@@ -1,16 +1,12 @@
 //--------------------------------------------------------------------------------------
-// File: Constant.cpp
+// File: Constant.h
 // íËêîÉtÉ@ÉCÉã
 // Date: 2017.09.26
 // Author: Syuto Yamada
 //--------------------------------------------------------------------------------------
-
 #pragma once
-#ifndef CONSTANT
-#define CONSTANT
-
-#include <d3d11.h>
-
+#include <d3d11_1.h>
+#include <exception>
 
 namespace DX
 {
@@ -23,5 +19,3 @@ namespace DX
 		}
 	}
 }
-
-#endif CONSTANT

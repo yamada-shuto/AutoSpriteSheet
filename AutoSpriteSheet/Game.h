@@ -4,8 +4,14 @@
 
 #pragma once
 
+#include<SpriteBatch.h>
+#include<SpriteFont.h>
+#include <SimpleMath.h>
+
 #include "StepTimer.h"
 
+#include "DetachSprite.h"
+#include "Constant.h"
 
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
@@ -62,4 +68,13 @@ private:
 
     // Rendering loop timer.
     DX::StepTimer                                   m_timer;
+
+	//スプライトバッチ
+	std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch; 
+
+	//スプライトバッチ
+	std::unique_ptr<DetachSprite> m_detach;
+
+	//ブーストゲージ
+	//Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_boost;
 };
