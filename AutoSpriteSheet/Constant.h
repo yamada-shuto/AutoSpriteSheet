@@ -8,8 +8,8 @@
 #include <d3d11_1.h>
 #include <exception>
 
-#define TEXTBOX_MAX_WIDTH 50
-#define TEXTBOX_MAX_HEIGHT 30
+#define TEXTBOX_MAX_WIDTH 100
+#define TEXTBOX_MAX_HEIGHT 50
 
 struct POSITION
 {
