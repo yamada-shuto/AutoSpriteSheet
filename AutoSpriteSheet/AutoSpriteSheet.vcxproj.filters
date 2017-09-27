@@ -14,6 +14,7 @@
     <ClInclude Include="Constant.h" />
     <ClInclude Include="DebugText.h" />
     <ClInclude Include="TextBox.h" />
+    <ClInclude Include="GameLib.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

@@ -9,7 +9,7 @@
 #include <exception>
 
 #define TEXTBOX_MAX_WIDTH 50
-#define TEXTBOX_MAX_HEIGHT 20
+#define TEXTBOX_MAX_HEIGHT 30
 
 struct POSITION
 {

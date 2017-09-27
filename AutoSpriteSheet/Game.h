@@ -4,14 +4,15 @@
 
 #pragma once
 
-#include<SpriteBatch.h>
-#include<SpriteFont.h>
+#include <SpriteBatch.h>
+#include <SpriteFont.h>
 #include <SimpleMath.h>
-
+#include "Mouse.h"
 #include "StepTimer.h"
 
 #include "DetachSprite.h"
 #include "Constant.h"
+#include "TextBox.h"
 
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
@@ -71,8 +72,10 @@ private:
 
 	//スプライトバッチ
 	std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch; 
+	//スプライトフォント
+	std::unique_ptr<DirectX::SpriteFont> m_spriteFont;
 
-	//スプライトバッチ
+	//切り離しクラス
 	std::unique_ptr<DetachSprite> m_detach;
 
 	//ブーストゲージ
