@@ -30,9 +30,12 @@ public:
 	void Render(const std::unique_ptr<DirectX::SpriteBatch>& spriteBatch);
 private:
 	bool GetTextureSize(const wchar_t Id, float sizex ,float sizey);
-	float m_sizeX;
-	float m_sizeY;
+	DirectX::SimpleMath::Vector2 m_retouchsize;
+	DirectX::SimpleMath::Vector2 m_originsize;
 	
+	bool m_isretouch;
+	RECT m_retouchrect;
+	RECT m_copyrect;
 	// キーボード
 	std::unique_ptr<DirectX::Keyboard> keyboard;
 	DirectX::Keyboard::KeyboardStateTracker m_KeyboardTracker;
@@ -42,6 +45,7 @@ private:
 
 	std::unique_ptr<TextBox> m_textbox;
 	//ブーストゲージ
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_boost;
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_test;
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_copy;
 	std::unique_ptr<DebugText> m_TextureLength;
 };

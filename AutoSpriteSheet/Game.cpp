@@ -42,7 +42,7 @@ void Game::Initialize(HWND window, int width, int height)
 
 	//スプライトフォント
 	m_spriteFont.reset(new SpriteFont(m_d3dDevice.Get(), L"myfile.spritefont"));
-
+	
 	TextBox::InitializeStatic(m_d3dDevice);
 
 	m_detach = std::make_unique<DetachSprite>();
