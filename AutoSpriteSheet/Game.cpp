@@ -40,8 +40,14 @@ void Game::Initialize(HWND window, int width, int height)
 	//スプライトバッチ
 	m_spriteBatch.reset(new SpriteBatch(m_d3dContext.Get()));
 
+	//スプライトフォント
+	m_spriteFont.reset(new SpriteFont(m_d3dDevice.Get(), L"myfile.spritefont"));
+
+	TextBox::InitializeStatic(m_d3dDevice);
+
 	m_detach = std::make_unique<DetachSprite>();
-	m_detach->Initialize(m_d3dDevice , m_spriteBatch);
+	m_detach->Initialize(m_d3dDevice , m_spriteBatch,window);
+
 	////ゲージの読み込み
 	//DX::ThrowIfFailed(
 	//	DirectX::CreateWICTextureFromFile(

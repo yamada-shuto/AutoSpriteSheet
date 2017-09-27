@@ -11,27 +11,37 @@
 #include <SpriteFont.h>
 #include <SimpleMath.h>
 #include <d3d11_1.h>
-#include <iostream>
+#include <Keyboard.h>
+#include <Mouse.h>
 
 #include "WICTextureLoader.h"
 #include "DebugText.h"
 
 #include "Constant.h"
+#include "TextBox.h"
 
 class DetachSprite
 {
 public:
-	void Initialize(const Microsoft::WRL::ComPtr<ID3D11Device>& d3dDevice, const std::unique_ptr<DirectX::SpriteBatch>& spriteBatch);
+	DetachSprite();
+	~DetachSprite();
+	void Initialize(const Microsoft::WRL::ComPtr<ID3D11Device>& d3dDevice, const std::unique_ptr<DirectX::SpriteBatch>& spriteBatch, HWND window);
 	void Update();
 	void Render(const std::unique_ptr<DirectX::SpriteBatch>& spriteBatch);
 private:
 	bool GetTextureSize(const wchar_t Id, float sizex ,float sizey);
 	float m_sizeX;
 	float m_sizeY;
-	int num;
 	
+	// キーボード
+	std::unique_ptr<DirectX::Keyboard> keyboard;
+	DirectX::Keyboard::KeyboardStateTracker m_KeyboardTracker;
+	//マウス
+	std::unique_ptr<DirectX::Mouse> m_mouse;
+	DirectX::Mouse::ButtonStateTracker m_MouseTracker;
+
+	std::unique_ptr<TextBox> m_textbox;
 	//ブーストゲージ
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_boost;
-	D3D11_SHADER_RESOURCE_VIEW_DESC* m_desc;
 	std::unique_ptr<DebugText> m_TextureLength;
 };

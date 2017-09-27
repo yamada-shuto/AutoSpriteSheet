@@ -164,6 +164,7 @@
     <ClInclude Include="DebugText.h" />
     <ClInclude Include="DetachSprite.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameLib.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="TextBox.h" />
