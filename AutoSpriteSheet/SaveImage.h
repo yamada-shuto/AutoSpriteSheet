@@ -13,9 +13,14 @@ public:
 	~SaveImage();
 
 	void SaveFile();
+	void SaveFileSelect();
+
+	void SetFilePass(TCHAR* file);
 
 private:
 	BOOL SaveFileDlg(HWND hWnd, TCHAR * fname, int sz, TCHAR * initDir);
 
+	TCHAR* m_filePass;
+	wchar_t* m_a;
 
 };

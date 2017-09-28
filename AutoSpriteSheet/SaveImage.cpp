@@ -5,6 +5,7 @@
 #include "SaveImage.h"
 
 #include <atlimage.h>
+#include <direct.h>
 
 SaveImage::SaveImage()
 {
@@ -40,6 +41,53 @@ void SaveImage::SaveFile()
 	}
 }
 
+void SaveImage::SaveFileSelect()
+{
+	//ファイルに書き込み
+	CImage savefile;
+
+	//現在は固定したもののみが出力される
+	savefile.Load(m_filePass);
+
+	//savefile.LoadFromResource(szFile,)
+
+	_mkdir("C:\\AutoSpriteSheet");
+
+	savefile.Save(L"C:\\AutoSpriteSheet\\SpriteSheet.png");
+
+	MessageBox(0, L"C:\\AutoSpriteSheet\\SpriteSheet.png", _TEXT("保存したファイル名"), MB_OK);
+
+	//TCHAR szFile[MAX_PATH * 256];
+
+	//if (SaveFileDlg(0, szFile, sizeof(szFile) / sizeof(TCHAR), _TEXT("C:\\")))
+	//{
+	//	//MessageBox(0, szFile, _TEXT("保存したファイル名"), MB_OK);
+
+	//	//ファイル作成
+	//	//HANDLE file = CreateFile(szFile, GENERIC_WRITE, FILE_SHARE_WRITE, nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL,NULL);
+
+
+	//	//ファイルに書き込み
+	//	CImage savefile;
+
+	//	//現在は固定したもののみが出力される
+	//	savefile.Load(m_a);
+
+	//	//savefile.LoadFromResource(szFile,)
+
+	//	savefile.Save(szFile);
+
+	//	//CloseHandle(file);
+
+	//}
+}
+
+void SaveImage::SetFilePass(TCHAR * file)
+{
+	m_filePass = file;
+	m_a = m_filePass;
+}
+
 BOOL SaveImage::SaveFileDlg(HWND hWnd, TCHAR * fname, int sz, TCHAR * initDir)
 {
 	OPENFILENAME o;
@@ -55,7 +103,7 @@ BOOL SaveImage::SaveFileDlg(HWND hWnd, TCHAR * fname, int sz, TCHAR * initDir)
 	o.lpstrDefExt = _TEXT("png");
 	o.lpstrTitle = _TEXT("イメージファイルを保存");
 	o.nFilterIndex = 1;
-	o.Flags = OFN_FILEMUSTEXIST | OFN_OVERWRITEPROMPT | OFN_NOCHANGEDIR;
+	o.Flags = OFN_FILEMUSTEXIST | OFN_OVERWRITEPROMPT | OFN_NOCHANGEDIR; //
 
 	return GetSaveFileName(&o);
 }
